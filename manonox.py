@@ -38,17 +38,16 @@ class Point:
         return self.__iterate_properties_operation(other, lambda a, b : a / b)
 
     def distance(self, other, method = "euclid"):
-        s = 0
-        for property, value in self.properties.items():
-            diff = value - other.properties.get(property, 0)
-            match method:
-                case "euclid":
-                    s += diff ** 2
-                case "manhattan":
-                    s += abs(diff)
-        
+        process_func = None
+        out_func = None
         match method:
             case "euclid":
-                return sqrt(s)
+                process_func = lambda x : x ** 2
+                out_func = lambda x : sqrt(x)
             case "manhattan":
-                return s
+                process_func = lambda x : abs(x)
+                out_func = lambda x : x
+        return out_func(sum([
+            process_func(value - other.properties.get(property, 0))
+            for property, value in self.properties.items()
+        ]))
