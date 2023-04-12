@@ -63,3 +63,8 @@ class Point:
             process_func(value - other.properties.get(property, 0))
             for property, value in self.properties.items()
         ]))
+
+    def copy(self):
+        new = Point(self.properties)
+        new.meta = deepcopy(self.meta)
+        return new 
