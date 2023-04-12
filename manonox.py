@@ -59,6 +59,9 @@ class Point:
             case "manhattan":
                 process_func = lambda x : abs(x)
                 out_func = lambda x : x
+            case "euclid_squared":
+                process_func = lambda x : x ** 2
+                out_func = lambda x : x
         return out_func(sum([
             process_func(value - other.properties.get(property, 0))
             for property, value in self.properties.items()
