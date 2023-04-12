@@ -16,6 +16,17 @@ class Point:
         
         return [Point.generate(func, **kwargs) for _ in range(count)]
 
+    @staticmethod
+    def centroid(points):
+        count = len(points)
+        if count == 0:
+            return None
+        properties = points[0].properties
+        averages = {}
+        for property in properties:
+            averages[property] = sum([getattr(point, property) for point in points]) / count
+        return Point(**averages)
+
     def __getattr__(self, __name: str):
         return self.properties.get(__name, 0)
 
