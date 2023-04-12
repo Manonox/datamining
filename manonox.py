@@ -5,6 +5,7 @@ from copy import deepcopy
 class Point:
     def __init__(self, **kwargs) -> None:
         super(Point, self).__setattr__("properties", deepcopy(kwargs))
+        super(Point, self).__setattr__("meta", {})
     
     @staticmethod
     def generate(func, count = None, **kwargs):
@@ -26,6 +27,12 @@ class Point:
         for property in properties:
             averages[property] = sum([getattr(point, property) for point in points]) / count
         return Point(**averages)
+
+    def add_meta(self, key, value):
+        self.meta[key] = value
+    
+    def get_meta(self, key):
+        return self.meta[key]
 
     def __getattr__(self, __name: str):
         return self.properties.get(__name, 0)
