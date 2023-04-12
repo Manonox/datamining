@@ -4,7 +4,7 @@
 ## List:
 - [x] Lab #1 (**FCM Clusterization**)
 - [x] Lab #2 (**Density Clusterization**)
-- [ ] Lab #3 (**K-means** on real data)
+- [x] Lab #3 (**K-means** on real data)
 - [ ] Lab #4 (**K-nearest** on real data)
 - [ ] To be continued...
 ---
