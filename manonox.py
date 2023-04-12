@@ -1,9 +1,10 @@
 from math import sqrt
+from copy import deepcopy
 
 
 class Point:
     def __init__(self, **kwargs) -> None:
-        super(Point, self).__setattr__("properties", kwargs)
+        super(Point, self).__setattr__("properties", deepcopy(kwargs))
     
     @staticmethod
     def generate(func, count = None, **kwargs):
